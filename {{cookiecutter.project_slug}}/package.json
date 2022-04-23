@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^2.0.0",
+    "node-dependency-injection": "^2.7.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -38,7 +39,7 @@
     "build": "yarn clean-build && yarn react-build && yarn electron-build"
   },
   "build": {
-    "appId": "{{cookiecuter.project_slug}}",
+    "appId": "{{cookiecutter.project_slug}}",
     "files": [
       "src/main.js",
       "build/**/*"

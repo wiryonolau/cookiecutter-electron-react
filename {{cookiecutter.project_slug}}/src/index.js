@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 
 const App = function(props) {
     return (
@@ -7,4 +7,6 @@ const App = function(props) {
     );
 }
 
-ReactDOM.render(<App/>, document.getElementById("root"));
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
