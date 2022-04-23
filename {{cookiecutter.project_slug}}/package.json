@@ -1,0 +1,55 @@
+{
+  "name": "{{cookiecutter.project_slug}}",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "targets": {
+    "main": false
+  },
+  "homepage": "./",
+  "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/{{cookiecutter.package_name}}.git"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^18.1.0",
+    "electron-builder": "^23.0.3",
+    "electron-reloader": "^1.2.3",
+    "parcel": "^2.5.0",
+    "wait-on": "^6.0.1"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "react-start": "parcel -p 3000 ./index.html --dist-dir build",
+    "react-build": "parcel build ./index.html --dist-dir build --public-url ./",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
+    "clean-build": "rm -rf build/* dist/*",
+    "electron-build": "electron-builder -wl",
+    "build": "yarn clean-build && yarn react-build && yarn electron-build"
+  },
+  "build": {
+    "appId": "{{cookiecuter.project_slug}}",
+    "files": [
+      "src/main.js",
+      "build/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    }
+  }
+}
