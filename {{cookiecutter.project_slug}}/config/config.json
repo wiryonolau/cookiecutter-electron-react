@@ -1,0 +1,13 @@
+{
+  "data" : [
+    {
+      "name" : "Hello from config"
+    },
+    {
+      "name" : "This if config data"
+    },
+    {
+      "name" : "Welcome to Test"
+    }
+  ]
+}
