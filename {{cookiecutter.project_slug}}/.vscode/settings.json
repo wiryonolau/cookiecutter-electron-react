@@ -1,0 +1,13 @@
+{
+    "editor.acceptSuggestionOnCommitCharacter": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.hover.enabled": false,
+    "editor.minimap.enabled": true,
+    "editor.parameterHints.enabled": false,
+    "editor.quickSuggestionsDelay": 10,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.wordBasedSuggestions": false,
+    "editor.formatOnSave": true,
+    "python.terminal.activateEnvironment": true
+}

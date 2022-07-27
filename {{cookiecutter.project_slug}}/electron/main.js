@@ -9,11 +9,11 @@ const fs = require('fs');
 
 const appDir = path.join(path.normalize(__dirname + "/../"));
 
-
-
 const createWindow = function() {
   mainWindow = new BrowserWindow({
-    minWidth: 800,
+    width: 1360,
+    height: 768,
+    minWidth: 640,
     minHeight: 600,
     webPreferences: {
       enablePreferredSizeMode: true,
@@ -58,6 +58,14 @@ if (isDev) {
 // Disable chrome gpu
 app.disableHardwareAcceleration();
 app.commandLine.appendSwitch("disable-software-rasterizer");
+
+// Single Instace application
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+    app.quit();
+} else {
+    app.whenReady().then(createWindow);
+}
 
 app.whenReady().then(createWindow);
 

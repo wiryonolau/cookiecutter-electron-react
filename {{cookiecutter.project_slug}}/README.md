@@ -29,6 +29,17 @@ source .env/bin/activate
 yarn start
 ```
 
+Parcel will monitor whole folder including node_modules, increase inotify size if neccessary
+```bash
+# edit /etc/systctl.d/99-inotify.conf
+fs.inotify.max_queued_events = 32768                                            
+fs.inotify.max_user_instances = 256
+fs.inotify.max_user_watches = 16384
+
+# refresh systctl
+sudo systctl --system
+```
+
 Create production package for windows and linux using docker
 Note that Production doesn't use webserver
 file in dist folder

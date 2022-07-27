@@ -29,11 +29,13 @@
   "dependencies": {
     "electron-is-dev": "^2.0.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   },
   "scripts": {
-    "react-start": "parcel -p 3000 public/index.html --dist-dir build",
-    "react-build": "parcel build public/index.html --dist-dir build --public-url ./",
+    "react-start": "rm -rf build/* && parcel serve -p 3000 --no-cache --dist-dir build public/index.html",
+    "react-build": "parcel build --no-cache --dist-dir build --public-url ./ public/index.html",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
     "clean-build": "rm -rf build/* dist/*",
     "electron-build": "electron-builder -wl",
@@ -45,7 +47,8 @@
       "cache": "./.build-cache"
     },
     "files": [
-      "src/main.js",
+      "electron/main.js",
+      "electron/**/*",
       "src/**/*",
       "config/**/*",
       "build/**/*"
@@ -55,10 +58,12 @@
         "AppImage"
       ]
     },
-    "win": {
-      "target": [
-        "nsis"
-      ]
+    "nsis" : {
+      "perMachine": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "packElevateHelper": false,
+      "allowElevation" : false
     }
   }
 }
