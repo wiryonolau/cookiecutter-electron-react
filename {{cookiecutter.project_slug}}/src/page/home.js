@@ -1,6 +1,6 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "../hooks";
+import { ipcFetch } from "../helper";
 
 export const HomePage = function (props) {
     let [config, setConfig] = useState({});
@@ -8,13 +8,9 @@ export const HomePage = function (props) {
     // useQuery cannot be use inside useEffect
     let query = useQuery();
 
-    React.useEffect(() => {
-        window.api.on("fromMain", (data) => {
-            setConfig(data);
-        });
-
-        window.api.send("toMain", {
-            method: "getConfig",
+    useEffect(() => {
+        ipcFetch("getConfig", {}, (resp) => {
+            setConfig(resp);
         });
     }, []);
 

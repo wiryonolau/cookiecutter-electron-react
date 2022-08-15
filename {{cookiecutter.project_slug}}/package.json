@@ -1,69 +1,69 @@
 {
-  "name": "{{cookiecutter.project_slug}}",
-  "version": "1.0.0",
-  "main": "./src/main.js",
-  "targets": {
-    "main": false
-  },
-  "homepage": "./",
-  "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
-  "repository" : {
-    "type": "git",
-    "url": "https://github.com/{{cookiecutter.package_name}}.git"
-  },
-  "license": "UNLICENSED",
-  "private": true,
-  "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@babel/preset-react": "^7.16.7",
-    "concurrently": "^7.1.0",
-    "cross-env": "^7.0.3",
-    "electron": "^18.1.0",
-    "electron-builder": "^23.0.3",
-    "electron-devtools-installer": "^3.2.0",
-    "electron-react-devtools": "^0.5.3",
-    "electron-reloader": "^1.2.3",
-    "parcel": "^2.5.0",
-    "wait-on": "^6.0.1"
-  },
-  "dependencies": {
-    "electron-is-dev": "^2.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0"
-  },
-  "scripts": {
-    "react-start": "rm -rf build/* && parcel serve -p 3000 --no-cache --dist-dir build public/index.html",
-    "react-build": "parcel build --no-cache --dist-dir build --public-url ./ public/index.html",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
-    "clean-build": "rm -rf build/* dist/*",
-    "electron-build": "electron-builder -wl",
-    "build": "yarn clean-build && yarn react-build && yarn electron-build"
-  },
-  "build": {
-    "appId": "{{cookiecutter.project_slug}}",
-    "electronDownload": {
-      "cache": "./.build-cache"
+    "name": "{{cookiecutter.project_slug}}",
+    "version": "1.0.0",
+    "main": "./src/main.js",
+    "targets": {
+        "main": false
     },
-    "files": [
-      "electron/main.js",
-      "electron/**/*",
-      "src/**/*",
-      "config/**/*",
-      "build/**/*"
-    ],
-    "linux": {
-      "target": [
-        "AppImage"
-      ]
+    "homepage": "./",
+    "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/{{cookiecutter.package_name}}.git"
     },
-    "nsis" : {
-      "perMachine": true,
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "packElevateHelper": false,
-      "allowElevation" : false
+    "license": "UNLICENSED",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "^7.17.9",
+        "@babel/preset-react": "^7.16.7",
+        "concurrently": "^7.1.0",
+        "cross-env": "^7.0.3",
+        "electron": "^18.1.0",
+        "electron-builder": "^23.0.3",
+        "electron-devtools-installer": "^3.2.0",
+        "electron-react-devtools": "^0.5.3",
+        "electron-reloader": "^1.2.3",
+        "parcel": "^2.5.0",
+        "wait-on": "^6.0.1"
+    },
+    "dependencies": {
+        "electron-log": "^4.4.8",
+        "electron-is-dev": "^2.0.0",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "react-router": "^6.3.0",
+        "react-router-dom": "^6.3.0"
+    },
+    "scripts": {
+        "react-start": "rm -rf build/* && parcel serve -p 3000 --no-cache --dist-dir build public/index.html",
+        "react-build": "parcel build --no-cache --dist-dir build --public-url ./ public/index.html",
+        "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
+        "clean-build": "rm -rf build/* dist/*",
+        "electron-build": "electron-builder -wl",
+        "build": "yarn clean-build && yarn react-build && yarn electron-build"
+    },
+    "build": {
+        "appId": "{{cookiecutter.project_slug}}",
+        "electronDownload": {
+            "cache": "./.build-cache"
+        },
+        "files": [
+            "resource/**/*",
+            "src/**/*",
+            "config/**/*",
+            "build/**/*"
+        ],
+        "linux": {
+            "target": [
+                "AppImage"
+            ]
+        },
+        "nsis": {
+            "perMachine": true,
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "packElevateHelper": false,
+            "allowElevation": false
+        }
     }
-  }
 }
