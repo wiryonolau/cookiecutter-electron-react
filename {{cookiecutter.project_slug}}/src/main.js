@@ -14,6 +14,7 @@ const createWindow = function () {
         minWidth: 640,
         minHeight: 600,
         webPreferences: {
+            contextIsolation: true,
             enablePreferredSizeMode: true,
             nodeIntegration: false,
             preload: path.join(__dirname, "service", "preload.js"),
