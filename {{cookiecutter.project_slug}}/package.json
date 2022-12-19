@@ -36,7 +36,7 @@
     },
     "scripts": {
         "react-start": "rm -rf build/* && parcel serve -p 3000 --no-cache --dist-dir build public/index.html",
-        "react-build": "parcel build --no-cache --dist-dir build --public-url ./ public/index.html",
+        "react-build": "parcel build --target=electron --no-cache --dist-dir build --public-url ./ public/index.html",
         "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron . \"",
         "clean-build": "rm -rf build/* dist/*",
         "electron-build": "electron-builder -wl",
