@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "../hooks";
-import { ipcFetch } from "../helper";
+import { ipcFetch } from "../util";
+
+import React from "react";
+import { Button } from "react-bulma-components";
 
 export const HomePage = function (props) {
     let [config, setConfig] = useState({});
@@ -29,6 +32,8 @@ export const HomePage = function (props) {
             <div>Welcome to App</div>
             <div>Query : {query.toString()}</div>
             {renderData}
+
+            <Button color="primary">My New Bulma button</Button>
         </div>
     );
 };

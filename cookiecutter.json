@@ -1,4 +1,5 @@
 {
+    "node_version": "18.12.0",
     "project_name": "Package Name",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
     "github_user": "wiryonolau",

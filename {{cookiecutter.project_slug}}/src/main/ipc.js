@@ -1,8 +1,8 @@
-const { ipcMain } = require("electron");
-const path = require("path");
-const fs = require("fs");
+import fs from "fs";
+import { ipcMain } from "electron";
+import { join } from "path";
 
-const startIpcService = function (appDir, mainWindow) {
+export const startIpcService = function (appDir, mainWindow) {
     ipcMain.on("toMain", (event, args) => {
         let result = {
             error: true,
@@ -10,7 +10,7 @@ const startIpcService = function (appDir, mainWindow) {
 
         switch (args.method) {
             case "getConfig":
-                config_file = path.join(appDir, "config", "config.json");
+                let config_file = join(appDir, "/resources/config.json");
                 fs.readFile(config_file, "utf8", (err, jsonString) => {
                     if (err) {
                         result = {
@@ -26,6 +26,7 @@ const startIpcService = function (appDir, mainWindow) {
                             message: err.message,
                         };
                     }
+
                     mainWindow.webContents.send(args.method, result);
                 });
                 break;
@@ -33,8 +34,4 @@ const startIpcService = function (appDir, mainWindow) {
                 mainWindow.webContents.send(args.method, result);
         }
     });
-};
-
-module.exports = {
-    startIpcService,
 };

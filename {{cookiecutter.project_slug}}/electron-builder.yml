@@ -1,0 +1,35 @@
+appId: "{{cookiecutter.project_slug}}"
+productName: "{{cookiecutter.project_slug}}"
+directories:
+  buildResources: build
+
+electronDownload:
+  cache: ./.build-cache
+
+files:
+  - "!**/.vscode/*"
+  - "!src/*"
+  - "!electron.vite.config.{js,ts,mjs,cjs}"
+  - "!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}"
+  - "!{.env,.env.*,.npmrc,pnpm-lock.yaml}"
+
+asarUnpack:
+  - resources/**
+
+linux:
+  target:
+    - AppImage
+
+appImage:
+  artifactName: ${name}-${version}.${ext}
+
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+  perMachine: true
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  packElevateHelper: false
+  allowElevation: false
