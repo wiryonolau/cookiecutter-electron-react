@@ -36,7 +36,7 @@
         "@electron-toolkit/utils": "^3.0.0"
     },
     "scripts": {
-        "dev": "electron-vite dev",
+        "dev": "electron-vite dev --watch",
         "preview": "electron-vite preview",
         "build": "electron-vite build",
         "postinstall": "electron-builder install-app-deps",

@@ -10,8 +10,21 @@ export default defineConfig({
     main: {
         plugins: [
             externalizeDepsPlugin(),
-            bytecodePlugin({ protectedStrings: ["password"] }),
+            bytecodePlugin({
+                chunkAlias: "credential",
+            }),
         ],
+        build: {
+            rollupOptions: {
+                output: {
+                    manualChunks: (id) => {
+                        if (id.includes("credential")) {
+                            return "credential";
+                        }
+                    },
+                },
+            },
+        },
     },
     preload: {
         plugins: [externalizeDepsPlugin()],

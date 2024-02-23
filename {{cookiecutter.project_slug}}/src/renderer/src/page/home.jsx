@@ -17,21 +17,12 @@ export const HomePage = function (props) {
         });
     }, []);
 
-    let renderData = (() => {
-        if (config.data === undefined) {
-            return null;
-        }
-
-        return config.data.map((k, i) => {
-            return <div key={i}>{k.name}</div>;
-        });
-    })();
-
     return (
         <div>
             <div>Welcome to App</div>
             <div>Query : {query.toString()}</div>
-            {renderData}
+            {config.data &&
+                config.data.map((k, i) => <div key={i}>{k.name}</div>)}
 
             <Button color="primary">My New Bulma button</Button>
         </div>
