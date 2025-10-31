@@ -5,7 +5,7 @@ import log from "electron-log/main";
 import { createWindow } from "./window";
 
 export const startIpcService = function (appDir, browserWindows) {
-    ipcMain.on("toMain", (event, args) => {
+    ipcMain.on("toMain", async (event, args) => {
         let result = {
             error: true,
         };
